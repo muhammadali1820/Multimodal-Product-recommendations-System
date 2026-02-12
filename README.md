@@ -26,7 +26,8 @@ fashion_ai/
 │   ├── 6_train_nlp_model.py       # NLP model training
 │   ├── 7_fusion_model.py   # Fusion model training
 │   ├── 8_fastapi.py        # API server
-│   └── 9_streamlit.py      # Web interface
+│   ├── 9_streamlit.py      # Web interface
+│   └── evaluate_models.py  # Model evaluation script
 └── models/                 # Model artifacts (not included in repo)
 ```
 
@@ -71,6 +72,27 @@ python scripts/6_train_nlp_model.py
 python scripts/7_fusion_model.py
 ```
 
+## 📊 Model Evaluation and Accuracy Checking
+
+After training your models, you can evaluate their accuracy using the evaluation script:
+
+```bash
+# Evaluate all models
+python scripts/evaluate_models.py
+
+# Evaluate specific model
+python scripts/evaluate_models.py --model vision    # Only vision model
+python scripts/evaluate_models.py --model nlp       # Only NLP model
+python scripts/evaluate_models.py --model fusion    # Only fusion model
+```
+
+The evaluation script will provide detailed metrics including:
+- **Accuracy**: Percentage of correct predictions
+- **F1-Score**: Harmonic mean of precision and recall
+- **Precision**: Ratio of correctly predicted positive observations
+- **Recall**: Ratio of correctly predicted positive observations to all actual positives
+- **Confusion Matrix**: Detailed breakdown of predictions
+
 ## 🌐 Running the Application
 
 1. Start the API server:
@@ -82,14 +104,6 @@ python scripts/8_fastapi.py
 ```bash
 streamlit run scripts/9_streamlit.py
 ```
-
-## 📊 Features
-
-- **Image Classification**: Detects fashion items (shirts, shoes) from images
-- **Sentiment Analysis**: Analyzes product reviews for sentiment
-- **Recommendation Engine**: Combines visual and textual inputs to generate recommendations
-- **Web Interface**: User-friendly Streamlit frontend
-- **REST API**: FastAPI backend for programmatic access
 
 ## 🤖 Model Architecture
 
